@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+<<<<<<< Updated upstream
 use Illuminate\Support\Facades\Auth;
 
 class IsAdmin
@@ -13,5 +14,18 @@ class IsAdmin
             return $next($request);
         }
         return response()->json(['message' => 'Forbidden. Admins only.'], 403);
+=======
+use Illuminate\Http\Request;
+
+class IsAdmin
+{
+    public function handle(Request $request, Closure $next)
+    {
+        if (!auth()->check() || auth()->user()->role !== 'admin') {
+            return redirect('/');
+        }
+
+        return $next($request);
+>>>>>>> Stashed changes
     }
 }

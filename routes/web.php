@@ -2,7 +2,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\BookController;
+use App\Http\Controllers\User\GenreController;
 
+<<<<<<< Updated upstream
 
 // Home
 Route::get('/', function () {
@@ -54,3 +58,14 @@ Route::get('/books', function () {
 
 // Logout POST
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+=======
+Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/books/free', [BookController::class, 'freeBooks']);
+Route::get('/books/premium', [BookController::class, 'premiumBooks']);
+Route::get('/books/{id}', [BookController::class, 'details']);
+
+Route::get('/genres/{id}', [GenreController::class, 'show']);
+
+Route::get('/search', [BookController::class, 'search']);
+>>>>>>> Stashed changes
