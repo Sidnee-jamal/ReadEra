@@ -35,7 +35,7 @@ class BookController extends Controller
     }
     public function myBooks()
     {
-        $books = auth()->user()->books()->get();
+        $books = auth()->user()->books()->orderByDesc('pivot_downloaded_at')->get();
         return view('user.my_books', compact('books'));
     }
     public function freeBooks()

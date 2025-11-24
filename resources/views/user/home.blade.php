@@ -13,14 +13,4 @@
 @endforeach
 </div>
 
-<h2 class="mt-5">Genres</h2>
-
-<div class="list-group">
-@foreach($genres as $genre)
-    <a href="/genres/{{ $genre->id }}" class="list-group-item list-group-item-action">
-        {{ $genre->name }}
-    </a>
-@endforeach
-</div>
-
 @endsection

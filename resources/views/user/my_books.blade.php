@@ -14,6 +14,7 @@
 					<div class="card-body">
 						<h5 class="card-title">{{ $book->title }}</h5>
 						<p class="text-muted">{{ $book->author }}</p>
+						<p class="small text-secondary mb-1">Downloaded: {{ $book->pivot->downloaded_at ? \Carbon\Carbon::parse($book->pivot->downloaded_at)->format('M d, Y H:i') : 'N/A' }}</p>
 						<a href="{{ route('books.read', $book->id) }}" class="btn btn-primary w-100 mb-2">Read Online</a>
 						<form action="{{ route('books.download', $book->id) }}" method="POST" target="_blank">
 							@csrf
