@@ -1,71 +1,96 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\BookController;
 use App\Http\Controllers\User\GenreController;
-
-<<<<<<< Updated upstream
+// Removed: use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\User\ProfileController;
 
 // Home
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Registration view
+// Registration
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 
-// Registration POST
-use App\Http\Controllers\AuthController;
-Route::post('/register', [AuthController::class, 'register'])->name('register.post');
-
-// Login view
+// Login
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 
-// Login POST
-Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-
-// Profile view (requires auth)
+// Profile
 Route::get('/profile', function () {
-    return view('profile');
+    return view('user.profile');
 })->middleware('auth')->name('profile');
-Route::get('/profile/edit', [AuthController::class, 'editProfile'])->middleware('auth')->name('profile.edit');
-Route::post('/profile/update', [AuthController::class, 'updateProfile'])->middleware('auth')->name('profile.update');
+Route::get('/profile/edit', [RegisterController::class, 'editProfile'])->middleware('auth')->name('profile.edit');
+Route::post('/profile/update', [RegisterController::class, 'updateProfile'])->middleware('auth')->name('profile.update');
 
-// Book listing view (requires auth)
-Route::get('/books', function () {
-    // Example: pass books array to view
-    $user = Auth::user();
-    $books = [];
-    if ($user && ($user->is_premium ?? false)) {
-        $books = [
-            ['title' => 'Premium Book 1'],
-            ['title' => 'Premium Book 2'],
-            ['title' => 'Free Book 1'],
-        ];
-    } else {
-        $books = [
-            ['title' => 'Free Book 1'],
-        ];
-    }
-    return view('books', compact('books'));
-})->middleware('auth')->name('books');
+// My Books
+Route::get('/my-books', [BookController::class, 'myBooks'])->middleware('auth')->name('my-books');
 
-// Logout POST
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
-=======
-Route::get('/', [HomeController::class, 'index']);
+// Books
+Route::get('/books', [BookController::class, 'index'])->middleware('auth')->name('books');
+Route::get('/books/free', [BookController::class, 'freeBooks'])->middleware('auth');
+Route::get('/books/{id}', [BookController::class, 'details'])->middleware('auth');
 
-Route::get('/books/free', [BookController::class, 'freeBooks']);
-Route::get('/books/premium', [BookController::class, 'premiumBooks']);
-Route::get('/books/{id}', [BookController::class, 'details']);
+// Read Book Online
+Route::get('/books/{id}/read', [BookController::class, 'readOnline'])->middleware('auth')->name('books.read');
 
-Route::get('/genres/{id}', [GenreController::class, 'show']);
+// Download Book
+Route::post('/books/{id}/download', [BookController::class, 'download'])->middleware('auth')->name('books.download');
 
-Route::get('/search', [BookController::class, 'search']);
->>>>>>> Stashed changes
+// Genres
+Route::get('/genres/{id}', [GenreController::class, 'show'])->middleware('auth');
+
+// Search
+Route::get('/search', [BookController::class, 'search'])->middleware('auth');
+
+// Logout
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/login', [LoginController::class, 'showLogin'])->middleware('guest');
+Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
+
+Route::get('/register', [RegisterController::class, 'showRegister'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'register'])->middleware('guest');
+
+// Logout
+Route::post('/logout', [LogoutController::class, 'logout'])->middleware('auth');
+
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+
+    Route::get('/register', [RegisterController::class, 'showRegister']);
+    Route::post('/register', [RegisterController::class, 'register']);
+
+    // require __DIR__.'/admin.php'; // Removed, admin routes are now in this file
+});
+
+// Authenticated user
+// (profile route already defined above)
+
+// Admin routes (simplified)
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/books', [App\Http\Controllers\Admin\AdminBookController::class, 'index'])->name('admin.books.index');
+    Route::get('/books/create', [App\Http\Controllers\Admin\AdminBookController::class, 'create'])->name('admin.books.create');
+    Route::post('/books/create', [App\Http\Controllers\Admin\AdminBookController::class, 'store'])->name('admin.books.store');
+    Route::get('/books/edit/{id}', [App\Http\Controllers\Admin\AdminBookController::class, 'edit'])->name('admin.books.edit');
+    Route::post('/books/edit/{id}', [App\Http\Controllers\Admin\AdminBookController::class, 'update'])->name('admin.books.update');
+    Route::get('/books/delete/{id}', [App\Http\Controllers\Admin\AdminBookController::class, 'destroy'])->name('admin.books.delete');
+    Route::get('/genres', [App\Http\Controllers\Admin\AdminGenreController::class, 'index'])->name('admin.genres.index');
+    Route::get('/genres/create', [App\Http\Controllers\Admin\AdminGenreController::class, 'create'])->name('admin.genres.create');
+    Route::post('/genres/create', [App\Http\Controllers\Admin\AdminGenreController::class, 'store'])->name('admin.genres.store');
+    Route::get('/genres/edit/{id}', [App\Http\Controllers\Admin\AdminGenreController::class, 'edit'])->name('admin.genres.edit');
+    Route::post('/genres/edit/{id}', [App\Http\Controllers\Admin\AdminGenreController::class, 'update'])->name('admin.genres.update');
+    Route::get('/genres/delete/{id}', [App\Http\Controllers\Admin\AdminGenreController::class, 'destroy'])->name('admin.genres.delete');
+        Route::get('/users', [App\Http\Controllers\Admin\AdminUserController::class, 'index'])->middleware('auth')->name('admin.users.index');
+        Route::delete('/users/{id}', [App\Http\Controllers\Admin\AdminUserController::class, 'destroy'])->middleware('auth')->name('admin.users.destroy');
+});

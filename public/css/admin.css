@@ -1,0 +1,184 @@
+/* ---------- ADMIN LAYOUT ---------- */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f7f6;
+}
+
+/* ---------- SIDEBAR ---------- */
+.admin-sidebar {
+    width: 260px;
+    background: #1b5e20;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    padding-top: 20px;
+}
+
+.sidebar-header {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+}
+
+.admin-tag {
+    font-size: 12px;
+    padding: 4px 10px;
+    background: #2e7d32;
+    border-radius: 4px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 5px;
+}
+
+.sidebar-menu .menu-title {
+    padding: 10px 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: white;
+    border-left: 4px solid transparent;
+    transition: 0.2s;
+}
+
+.sidebar-menu a:hover {
+    background: #2e7d32;
+    border-left-color: #66bb6a;
+}
+
+.sidebar-menu a.active {
+    background: #2e7d32;
+    border-left-color: #66bb6a;
+}
+
+/* ---------- MAIN CONTENT ---------- */
+.admin-content {
+    margin-left: 260px;
+    padding: 30px;
+    width: calc(100% - 260px);
+}
+
+.content-wrapper {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.page-title {
+    margin-top: 0;
+    color: #1b5e20;
+}
+
+/* ---------- TABLES ---------- */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.table th {
+    background: #1b5e20;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.table td {
+    padding: 10px;
+    background: white;
+    border-bottom: 1px solid #eee;
+}
+
+.table tr:hover td {
+    background: #f1f8f3;
+}
+
+/* ---------- FORMS ---------- */
+.form-group {
+    margin: 15px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #1b5e20;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #2e7d32;
+    box-shadow: 0 0 4px rgba(46,125,50,0.4);
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: #1b5e20;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2e7d32;
+}
+
+.btn-danger {
+    background: #b71c1c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #d32f2f;
+}
+.dashboard h2 {
+    margin-bottom: 20px;
+    color: #1b5e20;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card h3 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}

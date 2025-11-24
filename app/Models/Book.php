@@ -15,4 +15,9 @@ class Book extends Model
     {
         return $this->belongsToMany(Genre::class, 'book_genre');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_books')->withTimestamps()->withPivot('downloaded_at');
+    }
 }

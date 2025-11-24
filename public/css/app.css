@@ -1,0 +1,237 @@
+/* --------------------------------------------------
+   GLOBAL THEME — USER SIDE
+-------------------------------------------------- */
+body {
+    background-color: #f7f2e7; /* Cream */
+    color: #2a1f1f; /* Dark brown */
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+a {
+    color: #3b2f2f;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #d6b86c;
+}
+
+/* --------------------------------------------------
+   NAVBAR
+-------------------------------------------------- */
+.navbar {
+    background-color: #3b2f2f; /* Dark Brown */
+    padding: 15px 25px;
+    color: #fff8e7;
+}
+
+.navbar a {
+    color: #fff8e7;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    color: #d6b86c;
+}
+
+/* Navbar container */
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+/* Dropdown genres */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 35px;
+    background: white;
+    color: #333;
+    min-width: 180px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    list-style: none;
+    padding: 10px 0;
+}
+
+.dropdown-menu li a {
+    padding: 10px 15px;
+    color: #1b5e20;
+}
+
+.dropdown-menu li a:hover {
+    background: #e8f5e9;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* --------------------------------------------------
+   HERO SECTION
+-------------------------------------------------- */
+.hero {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    color: white;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* --------------------------------------------------
+   BOOK GRID
+-------------------------------------------------- */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.book-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 10px;
+    transition: 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.book-card img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+/* --------------------------------------------------
+   GENRE TAGS
+-------------------------------------------------- */
+.genre-tag {
+    background: #66bb6a;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* --------------------------------------------------
+   FOOTER
+-------------------------------------------------- */
+.footer {
+    background: #1b5e20;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+}
+
+/* --------------------------------------------------
+   ALERTS
+-------------------------------------------------- */
+.alert {
+    padding: 12px 18px;
+    border-radius: 6px;
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #e8f5e9;
+    color: #1b5e20;
+}
+
+.alert-error {
+    background: #ffebee;
+    color: #b71c1c;
+}
+
+/* --------------------------------------------------
+   BUTTONS
+-------------------------------------------------- */
+.btn {
+    padding: 10px 16px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-green {
+    background: #1b5e20;
+    color: white;
+}
+
+.btn-green:hover {
+    background: #2e7d32;
+}
+
+.btn-outline {
+    border: 2px solid #1b5e20;
+    color: #1b5e20;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: #1b5e20;
+    color: white;
+}
+
+/* --------------------------------------------------
+   LOGIN / REGISTER PAGE
+-------------------------------------------------- */
+.auth-container {
+    max-width: 450px;
+    margin: 60px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #1b5e20;
+}
+
+.auth-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.auth-container input:focus {
+    border-color: #1b5e20;
+    box-shadow: 0 0 4px rgba(46,125,50,0.4);
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    background: #1b5e20;
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.auth-btn:hover {
+    background: #2e7d32;
+}

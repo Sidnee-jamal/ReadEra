@@ -10,14 +10,20 @@ class AdminUserSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-   public function run()
+public function run()
 {
-    \App\Models\User::create([
+    \App\Models\User::firstOrCreate(
+    ['username' => 'admin'], // check by username
+    [
         'name' => 'Admin',
         'email' => 'admin@readera.com',
-        'password' => bcrypt('admin123'),
-        'role' => 'admin'
-    ]);
+        'password' => bcrypt('password'),
+        'role' => 'admin',
+        'is_admin' => true,
+    ]
+);
+
 }
+
 
 }

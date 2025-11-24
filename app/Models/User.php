@@ -36,6 +36,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function books()
+    {
+        return $this->belongsToMany(Book::class, 'user_books')->withTimestamps()->withPivot('downloaded_at');
+    }
+
     /**
      * Get the attributes that should be cast.
      *

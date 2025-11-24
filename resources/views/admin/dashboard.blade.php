@@ -1,29 +1,35 @@
 @extends('layouts.admin')
-@section('title','Dashboard')
+
+@section('title', 'Dashboard')
 
 @section('content')
 
-<div class="row g-3">
+<div class="dashboard">
 
-    <div class="col-md-4">
-        <div class="card shadow-sm border-0 p-4">
-            <h4>Total Books</h4>
-            <p class="fs-1 fw-bold">{{ $bookCount }}</p>
-        </div>
-    </div>
+    <h2>Admin Dashboard</h2>
 
-    <div class="col-md-4">
-        <div class="card shadow-sm border-0 p-4">
-            <h4>Total Genres</h4>
-            <p class="fs-1 fw-bold">{{ $genreCount }}</p>
-        </div>
-    </div>
+    <div class="dashboard-grid">
 
-    <div class="col-md-4">
-        <div class="card shadow-sm border-0 p-4">
-            <h4>Total Users</h4>
-            <p class="fs-1 fw-bold">{{ $userCount }}</p>
+        <div class="card">
+            <h3>Total Books</h3>
+            <p>{{ $books }}</p>
         </div>
+
+        <div class="card">
+            <h3>Total Genres</h3>
+            <p>{{ $genres }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Users</h3>
+            <p>{{ $users }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Admins</h3>
+            <p>{{ $admins }}</p>
+        </div>
+
     </div>
 
 </div>

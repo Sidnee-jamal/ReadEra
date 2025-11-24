@@ -28,14 +28,11 @@
             </td>
 
             <td>
-                @if($user->role !== 'admin')
-                <a href="/admin/users/promote/{{ $user->id }}"
-                   class="btn btn-success btn-sm">Promote</a>
-                @endif
-
-                <a href="/admin/users/delete/{{ $user->id }}"
-                   onclick="return confirm('Delete this user?')"
-                   class="btn btn-danger btn-sm">Delete</a>
+                <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Delete this user?')">Delete</button>
+                </form>
             </td>
         </tr>
         @endforeach

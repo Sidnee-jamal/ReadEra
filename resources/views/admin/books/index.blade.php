@@ -3,6 +3,13 @@
 
 @section('content')
 
+@if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
 <a href="/admin/books/create" class="btn btn-success mb-3">
     <i class="bi bi-plus-lg"></i> Add New Book
 </a>

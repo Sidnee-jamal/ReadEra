@@ -6,32 +6,29 @@
 
         <li class="nav-item mb-2">
             <a href="/admin/dashboard" class="nav-link text-white">
-                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                Dashboard
             </a>
         </li>
-
         <li class="nav-item mb-2">
             <a href="/admin/books" class="nav-link text-white">
-                <i class="bi bi-book me-2"></i> Books
+                Books
             </a>
         </li>
-
         <li class="nav-item mb-2">
             <a href="/admin/genres" class="nav-link text-white">
-                <i class="bi bi-tags me-2"></i> Genres
+                Genres
             </a>
         </li>
-
         <li class="nav-item mb-2">
             <a href="/admin/users" class="nav-link text-white">
-                <i class="bi bi-people me-2"></i> Users
+                Users
             </a>
         </li>
-
         <li class="nav-item mt-4">
-            <a href="/" class="nav-link text-danger">
-                <i class="bi bi-box-arrow-left me-2"></i> Exit Admin
-            </a>
+            <form method="POST" action="/logout">
+                @csrf
+                <button type="submit" class="nav-link text-danger bg-transparent border-0">Logout</button>
+            </form>
         </li>
 
     </ul>

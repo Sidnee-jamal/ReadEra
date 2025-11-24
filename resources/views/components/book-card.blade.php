@@ -1,5 +1,9 @@
 <div class="card shadow-sm">
-    <img src="{{ asset('uploads/covers/' . $book->cover_image) }}" class="card-img-top" alt="Cover">
+    @php
+        $coverPath = public_path('storage/' . $book->cover_image);
+        $hasCover = !empty($book->cover_image) && file_exists($coverPath);
+    @endphp
+    <img src="{{ $hasCover ? asset('storage/' . $book->cover_image) : asset('images/default-cover.png') }}" class="card-img-top" alt="Cover">
 
     <div class="card-body">
         <h5 class="card-title">{{ $book->title }}</h5>
